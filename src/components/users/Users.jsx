@@ -19,6 +19,7 @@ const Users = ({ users, loading }) => {
   }
 };
 
+// variable used for styling for the grid, since its not inline, the variable doesnt need {{ userStyle}}, instead { userStyle } is good
 const userStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(3, 1fr)',

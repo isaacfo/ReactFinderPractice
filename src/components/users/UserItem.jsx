@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// pulling out props needed
+// userItem was made into functional component because it has no state
+
+//   destructuring to avoid repeating this.state and no need for prop.state anymore due to pulling out props like below
 const UserItem = ({ user: { login, avatar_url, html_url } }) => {
+  // this. no longer need becuase it is not a class component
   // Dont need constructor to define state
-  //   destructuring to avoid repeating this.state
+  //   Render isn't needed if it is a func component
 
   return (
     <div className="card text-center">
@@ -24,6 +27,7 @@ const UserItem = ({ user: { login, avatar_url, html_url } }) => {
   );
 };
 
+// ptor
 UserItem.propTypes = {
   user: PropTypes.object.isRequired
 };
