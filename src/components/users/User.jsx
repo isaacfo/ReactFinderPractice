@@ -10,6 +10,7 @@ const User = ({ user, loading, getUser, getUserRepos, repos, match }) => {
     getUserRepos(match.params.login);
     // eslint-disable-next-line
   }, []);
+  //   brackets
 
   //   no more render
   const {
