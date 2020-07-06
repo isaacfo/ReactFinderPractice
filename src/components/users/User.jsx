@@ -5,10 +5,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import GitHubContext from '../../context/github/githubContext';
 
-const User = ({ getUserRepos, repos, match }) => {
+const User = ({ match }) => {
   const githubContext = useContext(GitHubContext);
 
-  const { getUser, loading, user } = githubContext;
+  const { getUser, loading, user, repos, getUserRepos } = githubContext;
 
   useEffect(() => {
     getUser(match.params.login);
@@ -110,9 +110,9 @@ const User = ({ getUserRepos, repos, match }) => {
 User.propTypes = {
   //   loading: PropTypes.bool.isRequired,
   //   user: PropTypes.object.isRequired,
-  repos: PropTypes.array.isRequired,
+  //   repos: PropTypes.array.isRequired,
   //   getUser: PropTypes.func.isRequired,
-  getUserRepos: PropTypes.func.isRequired
+  //   getUserRepos: PropTypes.func.isRequired
 };
 
 export default User;

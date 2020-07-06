@@ -7,7 +7,7 @@ import User from './components/users/User';
 import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
 import About from './components/pages/About';
-import axios from 'axios';
+// import axios from 'axios';
 
 import GithubState from './context/github/githubState';
 
@@ -17,8 +17,8 @@ import './App.css';
 const App = () => {
   // const [users, setUsers] = useState([]);
   // const [user, setUser] = useState({});
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [repos, setRepos] = useState([]);
+  // const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   // state = {
@@ -40,21 +40,6 @@ const App = () => {
   // }
   // Search Github Users
   // because it is arrow function async goes there
-
-  // Get users repos
-  const getUserRepos = async username => {
-    setLoading(true);
-    // this.setState({ loading: true });
-
-    const res = await axios.get(
-      `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_REACTFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_REACTFINDER_CLIENT_SECRET}`
-    );
-
-    setRepos(res.data);
-    setLoading(false);
-
-    // this.setState({ repos: res.data, loading: false });
-  };
 
   // Set Alert
   const showAlert = (msg, type) => {
@@ -87,13 +72,7 @@ const App = () => {
                 )}
               />
               <Route exact path="/about" component={About}></Route>
-              <Route
-                exact
-                path="/user/:login"
-                render={props => (
-                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
-                )}
-              />
+              <Route exact path="/user/:login" component={User} />
             </Switch>
           </div>
         </div>
