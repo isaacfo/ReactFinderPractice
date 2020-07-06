@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import UserItem from './UserItem';
 import Spinner from '../layout/Spinner';
 // impt emit shortcut
 import PropTypes from 'prop-types';
+import GitHubContext from '../../context/github/githubContext';
 
 // props are users and loading pulled out here
-const Users = ({ users, loading }) => {
+// no longer props because of context
+const Users = () => {
+  const githubContext = useContext(GitHubContext);
+
+  const { loading, users } = githubContext;
+
   if (loading) {
     return <Spinner />;
   } else {
@@ -28,8 +34,6 @@ const userStyle = {
 
 Users.proptypes = {
   // ptar emit shortcut
-  users: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired
 };
 
 export default Users;

@@ -15,8 +15,8 @@ import './App.css';
 
 // You can just put extends component if you
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
+  // const [users, setUsers] = useState([]);
+  // const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -41,34 +41,6 @@ const App = () => {
   // Search Github Users
   // because it is arrow function async goes there
 
-  // Search GitHub users
-  const searchUsers = async text => {
-    setLoading(true);
-    // this.setState({ loading: true });
-
-    const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_REACTFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_REACTFINDER_CLIENT_SECRET}`
-    );
-    setUsers(res.data.items);
-    setLoading(false);
-    // this.setState({ users: res.data.items, loading: false });
-  };
-
-  // Get single github user
-  const getUser = async username => {
-    setLoading(true);
-
-    // this.setState({ loading: true });
-
-    const res = await axios.get(
-      `https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_REACTFINDER_CLIENT_ID}&client_secret=${process.env.REACT_APP_REACTFINDER_CLIENT_SECRET}`
-    );
-
-    setUser(res.data);
-    setLoading(false);
-    // this.setState({ user: res.data, loading: false });
-  };
-
   // Get users repos
   const getUserRepos = async username => {
     setLoading(true);
@@ -83,13 +55,6 @@ const App = () => {
 
     // this.setState({ repos: res.data, loading: false });
   };
-  // Clear Users from state
-  const clearUsers = () => {
-    setUsers([]);
-    setLoading(false);
-
-    // this.setState({ users: [], loading: false });
-  };
 
   // Set Alert
   const showAlert = (msg, type) => {
@@ -103,8 +68,8 @@ const App = () => {
 
   return (
     <GithubState>
-      // React.Fragment can be used instead of div and it won't show up in dev
-      tools, "ghost element"
+      {/* React.Fragment can be used instead of div and it won't show up in dev
+      tools, "ghost element" */}
       <Router>
         <div>
           <Navbar />
@@ -116,13 +81,8 @@ const App = () => {
                 path="/"
                 render={props => (
                   <Fragment>
-                    <Search
-                      searchUsers={searchUsers}
-                      clearUsers={clearUsers}
-                      showClear={users.length > 0 ? true : false}
-                      setAlert={showAlert}
-                    />
-                    <Users loading={loading} users={users} />
+                    <Search setAlert={showAlert} />
+                    <Users />
                   </Fragment>
                 )}
               />
@@ -131,14 +91,7 @@ const App = () => {
                 exact
                 path="/user/:login"
                 render={props => (
-                  <User
-                    {...props}
-                    getUser={getUser}
-                    getUserRepos={getUserRepos}
-                    user={user}
-                    repos={repos}
-                    loading={loading}
-                  />
+                  <User {...props} getUserRepos={getUserRepos} repos={repos} />
                 )}
               />
             </Switch>
