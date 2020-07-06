@@ -1,11 +1,14 @@
 // rce for  class based component shortcut emit shortcut
 import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import GitHubContext from '../../context/github/githubContext';
+import AlertContext from '../../context/alert/AlertContext';
 
 // props here with function component, not pulled out in render anymore
-const Search = ({ setAlert }) => {
+const Search = () => {
   const githubContext = useContext(GitHubContext);
+  const alertContext = useContext(AlertContext);
+
   // method setText used to set/change state when needed
   const [text, setText] = useState('');
 
@@ -13,7 +16,7 @@ const Search = ({ setAlert }) => {
   const onSubmit = e => {
     e.preventDefault();
     if (text === '') {
-      setAlert('Please enter something', 'light');
+      alertContext.setAlert('Please enter something', 'light');
     } else {
       githubContext.searchUsers(text);
       setText('');
@@ -52,7 +55,7 @@ const Search = ({ setAlert }) => {
 
 Search.propTypes = {
   //   ptfr emit shortcut
-  setAlert: PropTypes.func.isRequired
+  //   setAlert: PropTypes.func.isRequired
 };
 
 export default Search;

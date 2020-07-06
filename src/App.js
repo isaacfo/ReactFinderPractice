@@ -2,14 +2,15 @@ import React, { useState, Fragment } from 'react';
 // router is alias for BroweserRouter
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import Users from './components/users/Users';
 import User from './components/users/User';
-import Search from './components/users/Search';
 import Alert from './components/layout/Alert';
+import Home from './components/pages/Home';
 import About from './components/pages/About';
+import NotFound from './components/pages/NotFound';
 // import axios from 'axios';
 
 import GithubState from './context/github/githubState';
+import AlertState from './context/alert/AlertState';
 
 import './App.css';
 
@@ -41,42 +42,29 @@ const App = () => {
   // Search Github Users
   // because it is arrow function async goes there
 
-  // Set Alert
-  const showAlert = (msg, type) => {
-    setAlert({ msg, type });
-    // this.setState({ alert: { msg, type } });
-
-    setTimeout(() => setAlert(null), 5000);
-  };
-
   // const { users, user, repos, loading } = this.state;
 
   return (
     <GithubState>
-      {/* React.Fragment can be used instead of div and it won't show up in dev
+      <AlertState>
+        {/* React.Fragment can be used instead of div and it won't show up in dev
       tools, "ghost element" */}
-      <Router>
-        <div>
-          <Navbar />
-          <div className="container">
-            <Alert alert={alert} />
-            <Switch>
-              <Route
-                exact
-                path="/"
-                render={props => (
-                  <Fragment>
-                    <Search setAlert={showAlert} />
-                    <Users />
-                  </Fragment>
-                )}
-              />
-              <Route exact path="/about" component={About}></Route>
-              <Route exact path="/user/:login" component={User} />
-            </Switch>
+        <Router>
+          <div>
+            <Navbar />
+            <div className="container">
+              <Alert />
+              <Switch>
+                <Route exact path="/" component={Home} />
+
+                <Route exact path="/about" component={About}></Route>
+                <Route exact path="/user/:login" component={User} />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
           </div>
-        </div>
-      </Router>
+        </Router>
+      </AlertState>
     </GithubState>
   );
 };
