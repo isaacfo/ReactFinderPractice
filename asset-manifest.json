@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/isaacfo/ReactFinderPractice/static/css/main.167fc0d5.chunk.css",
+    "main.js": "/isaacfo/ReactFinderPractice/static/js/main.439aeefa.chunk.js",
+    "main.js.map": "/isaacfo/ReactFinderPractice/static/js/main.439aeefa.chunk.js.map",
+    "runtime-main.js": "/isaacfo/ReactFinderPractice/static/js/runtime-main.241994c3.js",
+    "runtime-main.js.map": "/isaacfo/ReactFinderPractice/static/js/runtime-main.241994c3.js.map",
+    "static/js/2.017736ff.chunk.js": "/isaacfo/ReactFinderPractice/static/js/2.017736ff.chunk.js",
+    "static/js/2.017736ff.chunk.js.map": "/isaacfo/ReactFinderPractice/static/js/2.017736ff.chunk.js.map",
+    "index.html": "/isaacfo/ReactFinderPractice/index.html",
+    "precache-manifest.16db7d70a61b82ba7b5ceb7c6acebe77.js": "/isaacfo/ReactFinderPractice/precache-manifest.16db7d70a61b82ba7b5ceb7c6acebe77.js",
+    "service-worker.js": "/isaacfo/ReactFinderPractice/service-worker.js",
+    "static/css/main.167fc0d5.chunk.css.map": "/isaacfo/ReactFinderPractice/static/css/main.167fc0d5.chunk.css.map",
+    "static/js/2.017736ff.chunk.js.LICENSE.txt": "/isaacfo/ReactFinderPractice/static/js/2.017736ff.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.241994c3.js",
+    "static/js/2.017736ff.chunk.js",
+    "static/css/main.167fc0d5.chunk.css",
+    "static/js/main.439aeefa.chunk.js"
+  ]
+}
