@@ -5,7 +5,6 @@ import githubReducer from './githubReducer';
 import {
   SEARCH_USERS,
   SET_LOADING,
-  CLEAR_USETS,
   GET_USER,
   GET_REPOS,
   CLEAR_USERS

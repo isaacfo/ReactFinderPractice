@@ -1,6 +1,6 @@
-import React, { useState, Fragment } from 'react';
+import React from 'react';
 // router is alias for BroweserRouter
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import User from './components/users/User';
 import Alert from './components/layout/Alert';
@@ -20,7 +20,7 @@ const App = () => {
   // const [user, setUser] = useState({});
   // const [repos, setRepos] = useState([]);
   // const [loading, setLoading] = useState(false);
-  const [alert, setAlert] = useState(null);
+  // const [alert, setAlert] = useState(null);
 
   // state = {
   //   users: [],
@@ -50,16 +50,15 @@ const App = () => {
         {/* React.Fragment can be used instead of div and it won't show up in dev
       tools, "ghost element" */}
         <Router>
-          <div>
+          <div className="App">
             <Navbar />
             <div className="container">
               <Alert />
               <Switch>
                 <Route exact path="/" component={Home} />
-
-                <Route exact path="/about" component={About}></Route>
+                <Route exact path="/about" component={About} />
                 <Route exact path="/user/:login" component={User} />
-                <Route component={NotFound} />
+                {/* <Route component={NotFound} /> */}
               </Switch>
             </div>
           </div>
